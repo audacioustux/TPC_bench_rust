@@ -16,7 +16,7 @@ We can measure the latency and CPU utilization of different runtimes.
 
 Run diffrent servers:
 
-```
+```bash
 ./target/release/monoio-server --cores 1
 ./target/release/glommio-server --cores 1
 taskset -c 1 ./target/release/tokio-server --cores 1
@@ -28,13 +28,11 @@ taskset -c 1-4 ./target/release/tokio-server --cores 1 2 3 4
 
 Run client:
 
-```
+```bash
 ./target/release/client --target 10.0.0.0:40000 --cores 1 2 3 4 --conns-per-core 150
 ```
 
 ## Benchmark result
-
-### new result
 
 ```bash
 50.023: NAdd: 269962; NSum: 13960723; NAverage: 279084.188, LatencyAverage: 44.421 us # glommio
@@ -42,6 +40,4 @@ Run client:
 50.009: NAdd: 284090; NSum: 14031236; NAverage: 280574.656, LatencyAverage: 4253.316 us # tokio
 ```
 
-### old result
-
-Full result is available in [中文版本](https://github.com/bytedance/monoio/blob/master/docs/zh/benchmark.md) / [English version](https://github.com/bytedance/monoio/blob/master/docs/zh/benchmark.md).
+monoio has significantly higher latency than glommio with not much throughput difference.
