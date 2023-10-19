@@ -19,6 +19,7 @@ fn main() {
         let cpu_ = *cpu as _;
         let h = std::thread::spawn(move || {
             let ex = LocalExecutorBuilder::new(Placement::Fixed(cpu_))
+                .io_memory(32768)
                 .make()
                 .unwrap();
 
